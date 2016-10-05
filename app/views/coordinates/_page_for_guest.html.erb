@@ -1,0 +1,56 @@
+<div id="featured_area">
+	<div class="slider">
+		<ul>
+			<li><%= image_tag("slider/11.png")%></li>
+			<li><%= image_tag("slider/22.png")%></li>
+			<li><%= image_tag("slider/33.png")%></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="featured_area_second">
+
+	<div id="content_right">
+
+		<div id="none"></div>
+
+		<div id="panel">
+
+			<div id="button_up">
+				<%= link_to  new_user_session_path do %>
+					<%= image_tag("signin.png")%>
+				<% end %>
+			</div>	
+
+			<div id="button_low">
+				<%= link_to  new_user_registration_path do %>
+					<%= image_tag("signup.png")%>
+				<% end %>
+			</div>	
+		</div>	
+	</div>
+
+	<div id="content">
+
+		<div id="content_left">
+
+			<div id="column_left">
+				<%= image_tag("3-columns-images-2 (2).png", :style => 'float: left;, width: 90%;')%>
+				<h4>Promote Web Application</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et turpis et neque molestie mattis eu vitae lectus. Ut wisi enim ad minim veniam.</p>
+			</div>
+
+			<div id="mid">
+				<%= image_tag("widget_li_dots.png", :style => 'float: left;')%>
+				<%= image_tag("widget_li_dots.png", :style => 'float: right;')%>
+			</div>
+		</div>
+
+		<div id="column_right">
+			<%= image_tag("3-columns-images-3 (2).png", :style => 'float: right;, width: 90%;')%>
+			<h4>Professional Design</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et turpis et neque molestie mattis eu vitae lectus. Ut wisi enim ad minim veniam.</p>
+		</div>
+	</div>
+</div>

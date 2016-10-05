@@ -1,0 +1,118 @@
+<script src="https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+
+<div id="featured_area">
+
+	<div id="map">
+
+    <%= image_tag("11.jpg")%>
+
+	</div>
+
+</div>
+
+
+<div id="featured_area_second">
+
+<div id="content_right">
+
+<div id="none"></div>
+
+		<div id="panel">
+
+<div id="button_up">
+<%= image_tag("start.png", :class=>"1")%>
+<%= image_tag("finish.png", :class=>"2")%>
+</div>	
+
+<div id="button_low">
+
+<%= link_to  destroy_user_session_path, :method => :delete do %>
+<%= image_tag("exit.png")%> 
+<% end %>
+</div>	
+
+		</div>	
+
+		
+	</div>
+
+
+<div id="table">
+
+<div id="table_header">
+
+<div id="table_header_left">
+
+<h4>Здравствуйте, <%= current_user.email %></h4>
+
+</div>
+
+<div id="table_header_right">
+
+
+<%= form_for("/main", method: "get") do %>
+<%= date_select("show", @date, 
+    :order => [:day, :month, :year], :start_year => Date.today.year-2, 
+    :end_year => Date.today.year) %>
+
+    <%= submit_tag "OK" %>
+<% end %>
+
+</div>
+
+</div>
+
+<div id="table_content_header">
+
+<h4>Координаты за <%= @date%>:</h4>
+
+</div>
+
+<div id="table_content_coord">
+
+<table>
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ <%= @d%>
+  <tbody>
+
+    <% @coordinates.find_each do |coordinate| %>
+      <tr>
+        <td><%= coordinate.latitude %></td>
+        <td><%= coordinate.longitude %></td>
+        <td><%= coordinate.time %></td>
+
+<script>
+
+      function initMap1() {
+        var myLatLng = {lat: <%= coordinate.latitude %>, lng: <%= coordinate.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'You are here'
+        });
+      }
+    </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaFRnlEQ_3p_MUCmINiP6a3H5KgPpI5Wo&callback=initMap1"async defer></script>
+
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>

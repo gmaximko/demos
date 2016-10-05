@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+	<title>GeoTag</title>
+</head>
+
+<body>
+
+
+<% if user_signed_in? %>
+    <script>window.location = "http://localhost:3000/main";</script>
+<% end %>
+
+<div class="wrap">
+<%= render 'header' %>
+
+<%= render 'page_for_guest' %>
+
+</div>
+
+</body>
+
+
+</html>

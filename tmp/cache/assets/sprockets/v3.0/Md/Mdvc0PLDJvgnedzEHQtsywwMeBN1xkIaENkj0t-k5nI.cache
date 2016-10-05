@@ -1,0 +1,26 @@
+I"9(function() {
+  $(document).on('turbolinks:load', function() {
+    return $('#dd').on('click', function() {
+      return $.ajax({
+        type: 'POST',
+        url: '/coordinates',
+        dataType: 'json',
+        data: {
+          coordinate: {
+            latitude: 28.8,
+            longitude: -63.783,
+            time: new Date().toISOString()
+          }
+        },
+        success: function(msg) {
+          return console.log(msg);
+        },
+        error: function() {
+          return console.log('Error');
+        }
+      });
+    });
+  });
+
+}).call(this);
+:ET
