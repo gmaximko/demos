@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   root 'coordinates#index'
   get '/main', to: 'coordinates#main', as: 'user_root'
   get '/index', to: 'coordinates#index'
-
 end

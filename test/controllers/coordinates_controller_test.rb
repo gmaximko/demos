@@ -5,18 +5,18 @@ class CoordinatesControllerTest < ActionController::TestCase
     @coordinate = coordinates(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:coordinates)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create coordinate" do
+  test 'should create coordinate' do
     assert_difference('Coordinate.count') do
       post :create, coordinate: { email: @coordinate.email, latitude: @coordinate.latitude, longitude: @coordinate.longitude, time: @coordinate.time }
     end
@@ -24,22 +24,22 @@ class CoordinatesControllerTest < ActionController::TestCase
     assert_redirected_to coordinate_path(assigns(:coordinate))
   end
 
-  test "should show coordinate" do
+  test 'should show coordinate' do
     get :show, id: @coordinate
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @coordinate
     assert_response :success
   end
 
-  test "should update coordinate" do
+  test 'should update coordinate' do
     patch :update, id: @coordinate, coordinate: { email: @coordinate.email, latitude: @coordinate.latitude, longitude: @coordinate.longitude, time: @coordinate.time }
     assert_redirected_to coordinate_path(assigns(:coordinate))
   end
 
-  test "should destroy coordinate" do
+  test 'should destroy coordinate' do
     assert_difference('Coordinate.count', -1) do
       delete :destroy, id: @coordinate
     end

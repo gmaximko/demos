@@ -1,6 +1,6 @@
 ActiveAdmin.register Coordinate do
-permit_params :user_id, :latitude, :longitude
-  
+  permit_params :user_id, :latitude, :longitude
+
   index do
     selectable_column
     id_column
@@ -10,12 +10,12 @@ permit_params :user_id, :latitude, :longitude
     actions
   end
 
-   filter :user_id
-   filter :latitude
-   filter :longitude
+  filter :user_id
+  filter :latitude
+  filter :longitude
 
   form do |f|
-    f.inputs "Coordinates" do
+    f.inputs 'Coordinates' do
       f.input :user_id
       f.input :latitude
       f.input :longitude
