@@ -16,33 +16,29 @@ before_filter :authenticate_user!, except: [:index]
 
     else 
 
-    @date = Date.parse(params[:show].to_a.sort.collect{|c| c[1]}.join("-")) || 1
+    @date = Date.parse(params[:show].to_a.sort.collect{|c| c[1]}.join("-"))
     @time_start = @date
-    @time_finish = @date+1.day
+    @time_finish = @date.tomorrow
 
     end 
     
-    @coordinates = Coordinate.where(email: current_user.email, time: @time_start..@time_finish)
+    @coordinates = Coordinate.where(user_id: current_user.id, created_at: @time_start..@time_finish)
     
   end
 
-  # POST /coordinates
-  # POST /coordinates.json
   def create
-    @coordinate = Coordinate.new(coordinate_par.merge({email: current_user.email}))
+    @coordinate = Coordinate.new(coordinate_par.merge({user_id: current_user.id}))
 
     respond_to do |format|
       if @coordinate.save
-        format.html { redirect_to @coordinate, notice: 'Coordinate was successfully created.' }
         format.json { render :show, status: :created, location: @coordinate }
       else
-        format.html { render :new }
         format.json { render json: @coordinate.errors, status: :unprocessable_entity }
       end
     end
   end
 
     def coordinate_par
-      params.require(:coordinate).permit(:latitude, :longitude, :time)
+      params.require(:coordinate).permit(:latitude, :longitude)
     end
 end

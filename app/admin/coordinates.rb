@@ -1,27 +1,24 @@
 ActiveAdmin.register Coordinate do
-permit_params :email, :latitude, :longitude, :time
+permit_params :user_id, :latitude, :longitude
   
   index do
     selectable_column
     id_column
-    column :email
+    column :user_id
     column :latitude
     column :longitude
-    column :time
     actions
   end
 
-   filter :email
+   filter :user_id
    filter :latitude
    filter :longitude
-   filter :time
 
   form do |f|
     f.inputs "Coordinates" do
-      f.input :email
+      f.input :user_id
       f.input :latitude
       f.input :longitude
-      f.input :time
     end
     f.actions
   end

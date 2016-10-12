@@ -7,11 +7,11 @@ $(document).ready(function ()
 	var time_finish;
 	var latitude;
 	var longitude;
-	$(".2").hide();
-	$(".1").click(function () 
+	$(".finish_button").hide();
+	$(".start_button").click(function () 
 	{
-        	$(".1").hide();
-            $(".2").show();
+        	$(".start_button").hide();
+            $(".finish_button").show();
 		if (logic_for_ajax!=false) ymaps.ready(init); 
 		ID = setInterval(function() 
 		{ 
@@ -38,8 +38,7 @@ $(document).ready(function ()
 			    	coordinate: 
 				    	{
 				    	    latitude: latitude,
-				    	    longitude: longitude ,
-				        	time: time_create,
+				    	    longitude: longitude
 			    		}
 			  		},
 					dataType: 'json'
@@ -59,8 +58,7 @@ $(document).ready(function ()
 				    	coordinate: 
 				    	{
 				        	latitude: latitude,
-				        	longitude: longitude ,
-				        	time: time_create,
+				        	longitude: longitude
 				    	}
 				  	},
 				  	dataType: 'json'
@@ -70,14 +68,13 @@ $(document).ready(function ()
 		}
     });
 
-        $(".2").click(function () 
+        $(".finish_button").click(function () 
 	{
                 time_finish = new Date().toISOString();
-                $(".2").hide();
-                $(".1").show();
+                $(".finish_button").hide();
+                $(".start_button").show();
 		clearInterval(ID);
 		location.reload();
-		//document.getElementById("table_header_right").display='block';
 		logic_for_ajax=true;
 
     });
