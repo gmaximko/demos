@@ -4,7 +4,7 @@
 
 	<div id="map">
 
-    <%= image_tag("11.jpg")%>
+    <%= image_tag("map.jpg")%>
 
 	</div>
 
@@ -79,14 +79,14 @@
       <th colspan="3"></th>
     </tr>
   </thead>
- <%= @d%>
+
   <tbody>
 
     <% @coordinates.find_each do |coordinate| %>
       <tr>
         <td><%= coordinate.latitude %></td>
         <td><%= coordinate.longitude %></td>
-        <td><%= coordinate.time %></td>
+        <td><%= coordinate.created_at %></td>
 
 <script>
 
